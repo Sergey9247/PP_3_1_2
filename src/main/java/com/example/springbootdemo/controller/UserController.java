@@ -1,10 +1,11 @@
 package com.example.springbootdemo.controller;
 
 import com.example.springbootdemo.model.User;
-import com.example.springbootdemo.service.UserService;
+import com.example.springbootdemo.service.UserServiceImp;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -13,9 +14,9 @@ import java.util.List;
 @Controller
 public class UserController {
 
-    private UserService userService;
+    private UserServiceImp userService;
 
-    public UserController(UserService userService) {
+    public UserController(UserServiceImp userService) {
         this.userService = userService;
     }
 
@@ -44,10 +45,8 @@ public class UserController {
     }
 
     @GetMapping("/users_update/{id}")
-    public String updateUserForm(@PathVariable("id") long id, Model model) {
-        User user = userService.findById(id);
-        model.addAttribute("user", user);
-        return "users_update";
+    public String updateUserForm(@ModelAttribute("user") User user) {
+        return "/users_update";
     }
 
     @PostMapping("/users_update")
