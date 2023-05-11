@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<meta charset="UTF-8">
-<title>Create user</title>
+<head>
+    <meta charset="UTF-8">
+    <title>Create user</title>
 </head>
 <body>
 <form action="#" th:action="@{/users_update}" th:object="${user}" method="post">
@@ -15,7 +16,7 @@
     <label for="lastName">Last name</label>
     <input type="text" th:field="*{lastName}" id="lastName" placeholder="Last Name">
     <br/>
-    <label for="age">First name</label>
+    <label for="age">Age</label>
     <input type="text" th:field="*{age}" id="age" placeholder="age">
     <br/>
     <input type="submit" value="Update User">
